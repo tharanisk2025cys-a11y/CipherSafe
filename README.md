@@ -20,7 +20,7 @@ A full-stack web application for Caesar cipher, Vigenere cipher, cryptanalysis, 
 - Flask 3.1.2
 - Flask-CORS 6.0.2
 - Werkzeug 3.1.5
-- SQLite3 (database)
+- MongoDB(database)
 
 **Frontend**: HTML5 + CSS3 + Vanilla JavaScript
 - Responsive design
