@@ -258,7 +258,7 @@ CipherSafe/
 │   ├── auth.py         # User authentication logic
 │   ├── db.py           # Database operations & history
 │   ├── requirements.txt # Python dependencies
-│   └── database.db     # SQLite database (auto-created)
+│   └── database.db     # MongoDB (auto-created)
 ├── frontend/
 │   ├── index.html      # Main cipher tools interface
 │   ├── login.html      # User authentication page
