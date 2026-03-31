@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CipherSafe - Login</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #1e293b;
+    border-radius: 10px;
+  }
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .login-container input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #38bdf8;
+    border-radius: 5px;
+    background: #0f172a;
+    color: white;
+  }
+  .login-container button {
+    width: 48%;
+    margin: 10px 1%;
+    padding: 10px;
+  }
+  .button-group {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+<h2>🔐 CipherSafe Login</h2>
+
+<label for="user">Username:</label>
+<input id="user" type="text" placeholder="Enter username"><br>
+
+<label for="pass">Password:</label>
+<input id="pass" type="password" placeholder="Enter password"><br>
+
+<div class="button-group">
+  <button onclick="login()">Login</button>
+  <button onclick="register()">Register</button>
+</div>
+</div>
+
+<script src="auth.js"></script>
+
+</body>
+</html>

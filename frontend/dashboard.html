@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Cipher history</h2>
+<div class="card">
+  <button onclick="loadHistory()">Reload</button>
+  <button onclick="goBack()">Home</button>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div id="data"></div>
+
+<script>
+const api = "http://127.0.0.1:5000";
+
+function assertLoggedIn() {
+  if (!localStorage.getItem("cipherUser")) {
+    window.location.href = "login.html";
+  }
+}
+
+async function loadHistory() {
+  // assertLoggedIn(); // History is public
+
+  try {
+    const res = await fetch(api + "/history");
+    if (!res.ok) {
+      document.getElementById("data").innerHTML = "<p style='color: red;'>Failed to load history.</p>";
+      return;
+    }
+    
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      document.getElementById("data").innerHTML = "<p>No history yet.</p>";
+      return;
+    }
+
+    const html = data
+      .map(item => {
+        const timestamp = item[4] ? new Date(item[4]).toLocaleString() : 'Unknown';
+        return `<div class='history-item' style='margin: 10px 0; padding: 10px; background: #1e293b; border-radius: 5px;'>
+          <small>${timestamp}</small><br>
+          <strong>Original:</strong> ${item[1]}<br>
+          <strong>Encrypted:</strong> ${item[2]}<br>
+          <strong>Key:</strong> ${item[3]}
+        </div>`;
+      })
+      .join("");
+
+    document.getElementById("data").innerHTML = html;
+  } catch (err) {
+    document.getElementById("data").innerHTML = "<p style='color: red;'>Error loading history: " + err.message + "</p>";
+  }
+}
+
+function goBack() {
+  window.location.href = "index.html";
+}
+
+function logout() {
+  localStorage.removeItem("cipherUser");
+  window.location.href = "login.html";
+}
+
+loadHistory();
+</script>
+
+</body>
+</html>

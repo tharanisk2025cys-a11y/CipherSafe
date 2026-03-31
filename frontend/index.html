@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CipherSafe Ultra - Real-Time Encryption</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .use-case { background: #0f4c75; padding: 15px; border-left: 4px solid #00d4ff; margin: 15px 0; border-radius: 5px; }
+    .use-case h4 { margin: 0 0 8px 0; color: #00d4ff; }
+    .use-case p { margin: 0; font-size: 13px; color: #ccc; }
+    .input-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .input-group input { padding: 10px; border: 1px solid #38bdf8; border-radius: 5px; background: #0f172a; color: white; }
+    .button-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .button-row button { flex: 1; min-width: 120px; }
+    .results { background: #1a1a2e; padding: 20px; border-radius: 8px; margin-top: 20px; min-height: 150px; }
+    .results h3 { margin-top: 0; color: #00d4ff; }
+    .results pre { white-space: pre-wrap; color: #00ff00; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="main">
+      <h1>🔐 CipherSafe Ultra</h1>
+      <p style="color: #00d4ff;">Real-Time Encryption & Security Analysis Tool</p>
+
+      <div class="use-case">
+        <h4>What is this?</h4>
+        <p>Learn about encryption by testing different cipher methods. See how Caesar and Vigenere ciphers work. Check if your text is vulnerable to attacks. Perfect for students, security enthusiasts, and anyone learning cryptography.</p>
+      </div>
+
+      <div class="input-group">
+        <input id="text" placeholder="Enter text or message to encrypt/decrypt" />
+        <input id="key" placeholder="Caesar Key (0-25, optional for encrypt)" />
+        <input id="vigenereKey" placeholder="Vigenere key (letters only, required)" />
+        <input type="file" id="fileInput" accept=".txt,.md" />
+      </div>
+
+      <div class="card">
+        <div style="background: #1a1a2e; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+          <h3 style="margin-top: 0; color: #00d4ff;">Basic Encryption</h3>
+          <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Enter text above or upload a .txt/.md file, then choose an operation:</p>
+          <div class="button-row">
+            <button onclick="encrypt()">Caesar Encrypt</button>
+            <button onclick="decrypt()">Caesar Decrypt</button>
+            <button onclick="vigenereEncrypt()">Vigenere Encrypt</button>
+            <button onclick="vigenereDecrypt()">Vigenere Decrypt</button>
+          </div>
+          <div class="button-row" style="margin-top: 10px;">
+            <button onclick="encryptFile()">Encrypt File</button>
+            <button onclick="decryptFile()">Decrypt File</button>
+          </div>
+        </div>
+
+        <div style="background: #1a1a2e; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+          <h3 style="margin-top: 0; color: #00ff00;">Real-Time Tools</h3>
+          <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Advanced analysis tools:</p>
+          <div class="button-row">
+            <button onclick="compare()" style="background: #2ecc71;">Compare Ciphers</button>
+            <button onclick="audit()" style="background: #e74c3c;">Security Audit</button>
+            <button onclick="frequency()">Frequency Analysis</button>
+          </div>
+        </div>
+
+        <div style="background: #1a1a2e; padding: 15px; border-radius: 8px;">
+          <h3 style="margin-top: 0; color: #f39c12;">Attack Simulation</h3>
+          <p style="font-size: 12px; color: #ccc; margin-bottom: 10px;">Test cipher strength:</p>
+          <div class="button-row">
+            <button onclick="brute()" style="background: #e67e22;">Brute Force</button>
+            <button onclick="simulate()">Attack Simulation</button>
+          </div>
+        </div>
+
+        <button onclick="go()" style="width: 100%; margin-top: 15px; background: #9b59b6;">View History</button>
+      </div>
+
+      <div class="results">
+        <h3>Results</h3>
+        <div id="out">Click a button above to see results here.</div>
+      </div>
+
+      <div class="use-case" style="margin-top: 30px;">
+        <h4>How to Use:</h4>
+        <p><strong>Text Input:</strong> Type your message in the text field</p>
+        <p><strong>File Input:</strong> Click "Choose File" and select a .txt or .md file</p>
+        <p><strong>Caesar:</strong> Simple shift cipher. Try key 3: "HELLO" → "KHOOR"</p>
+        <p><strong>Vigenere:</strong> Stronger. Try key "LEMON": "ATTACK AT DAWN" → "LXFOPV EF RNHR"</p>
+        <p><strong>File Operations:</strong> Encrypt/Decrypt entire files - downloads processed file automatically</p>
+        <p><strong>Compare:</strong> See both methods at once on any text</p>
+        <p><strong>Audit:</strong> Check if your text is vulnerable to attacks</p>
+        <p><strong>Frequency:</strong> See letter patterns (used to crack Caesar)</p>
+        <p><strong>Brute Force:</strong> Try all 25 Caesar keys automatically</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
